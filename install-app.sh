@@ -8,7 +8,9 @@
 # used to suppress any interactive prompts - we won't be able to confirm operation 
 # when running the script as VM extention.  
 apt-get update -yq
-apt-get install python3-pip -yq
+export DEBIAN_FRONTEND=noninteractive
+apt-get install -yqq --no-install-recommends python3-pip
+rm -rf /var/lib/apt/lists/*
 
 # Create a directory for the app and download the files. 
 mkdir /app 
@@ -18,6 +20,9 @@ cp -r azure_task_12_deploy_app_with_vm_extention/app/* /app
 
 # create a service for the app via systemctl and start the app
 mv /app/todoapp.service /etc/systemd/system/
+chmod +x /app/start.sh
+chmod 644 /etc/systemd/system/todoapp.service
+chown root:root /etc/systemd/system/todoapp.service
 systemctl daemon-reload
 systemctl start todoapp
 systemctl enable todoapp
