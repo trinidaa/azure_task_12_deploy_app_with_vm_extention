@@ -3,11 +3,7 @@
 set -ex
 apt update -yq
 export DEBIAN_FRONTEND=noninteractive
-apt install -yqq --no-install-recommends python3-pip || {
-    echo "Failed to install python3-pip"
-    exit 1
-}
-rm -rf /var/lib/apt/lists/*
+apt install -yqq --no-install-recommends python3-pip
 mkdir -p /app
 
 git clone "https://github.com/azat-co/azure_task_12_deploy_app_with_vm_extention-main.git" "/tmp/azure_task_12"
