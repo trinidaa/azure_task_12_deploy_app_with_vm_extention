@@ -6,7 +6,7 @@ export DEBIAN_FRONTEND=noninteractive
 apt install -yqq --no-install-recommends python3-pip
 mkdir -p /app
 
-git clone "https://github.com/azat-co/azure_task_12_deploy_app_with_vm_extention-main.git" "/tmp/azure_task_12"
+git clone https://github.com/trinidaa/azure_task_12_deploy_app_with_vm_extention.git /tmp/azure_task_12
 cp -r /tmp/azure_task_12/app/* /app/
 rm -rf /tmp/azure_task_12
 cp /app/todoapp.service /etc/systemd/system/
