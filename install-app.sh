@@ -1,10 +1,8 @@
 #!/bin/bash
-
-set -ex
 apt-get update -yq
 export DEBIAN_FRONTEND=noninteractive
-apt-get install -yqq --no-install-recommends python3-pip
-mkdir /app
+apt-get install python3-pip -yq
+mkdir -p /app
 
 git clone https://github.com/trinidaa/azure_task_12_deploy_app_with_vm_extention.git /tmp/repo
 cp -r /tmp/repo/app/* /app/
@@ -16,4 +14,3 @@ chown root:root /etc/systemd/system/todoapp.service
 systemctl daemon-reload
 systemctl enable todoapp.service
 systemctl start todoapp.service
-echo "Installation completed successfully"
