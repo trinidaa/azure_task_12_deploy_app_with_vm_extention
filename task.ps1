@@ -2,7 +2,7 @@ $linuxUser = "azur11"
 $linuxPassword = "YourSecurePassword123!" | ConvertTo-SecureString -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential ($linuxUser, $linuxPassword)
 $location = "uksouth"
-$resourceGroupName = "mate-azure-task-121"
+$resourceGroupName = "mate-azure-task-125"
 $networkSecurityGroupName = "defaultnsg"
 $virtualNetworkName = "vnet"
 $subnetName = "default"
@@ -57,6 +57,7 @@ $Params = @{
     Publisher          = 'Microsoft.Azure.Extensions'
     ExtensionType      = 'CustomScript'
     TypeHandlerVersion = '2.1'
-    Settings          = @{fileUris = @("https://github.com/trinidaa/azure_task_12_deploy_app_with_vm_extention/blob/main/install-app.sh"); commandToExecute = "bash install-app.sh"}
+    Settings          = @{fileUris = @("https://github.com/trinidaa/azure_task_12_deploy_app_with_vm_extention/blob/main/install-app.sh")
+    commandToExecute = "./install-app.sh"}
 }
 Set-AzVMExtension @Params
