@@ -1,16 +1,16 @@
 #!/bin/bash
-
 apt-get update -yq
+export DEBIAN_FRONTEND=noninteractive
 apt-get install python3-pip -yq
+mkdir -p /app
 
-# Create a directory for the app and download the files.
-mkdir /app
-# make sure to uncomment the line bellow and update the link with your GitHub username
-git clone https://github.com/efirshey/azure_task_12_deploy_app_with_vm_extention.git
-cp -r azure_task_12_deploy_app_with_vm_extention/app/* /app
-
-# create a service for the app via systemctl and start the app
+git clone https://github.com/trinidaa/azure_task_12_deploy_app_with_vm_extention.git
+cp -r /azure_task_12_deploy_app_with_vm_extention.git/app/* /app/
 mv /app/todoapp.service /etc/systemd/system/
+rm -rf /azure_task_12_deploy_app_with_vm_extention
+chmod +x /app/start.sh
+chmod 644 /etc/systemd/system/todoapp.service
+chown root:root /etc/systemd/system/todoapp.service
 systemctl daemon-reload
-systemctl start todoapp
-systemctl enable todoapp
+systemctl enable todoapp.service
+systemctl start todoapp.service
