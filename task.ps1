@@ -21,7 +21,7 @@ do {
 $keyPath = "$HOME\.ssh\$linuxUser"
 
 if (-not (Test-Path "$HOME\.ssh\$linuxUser.pub")) {
-    Write-Host "SSH-ключ не найден. Генерируем новый..." -ForegroundColor Cyan
+    Write-Host "SSh key not found. Generating SSH key..." -ForegroundColor Cyan
     ssh-keygen -t rsa -b 4096 -f $keyPath -N "" | Out-Null
 }
 
@@ -63,7 +63,7 @@ $Params = @{
     Publisher          = 'Microsoft.Azure.Extensions'
     ExtensionType      = 'CustomScript'
     TypeHandlerVersion = '2.1'
-    Settings          = @{fileUris = @("https://raw.githubusercontent.com/trinidaa/azure_task_12_deploy_app_with_vm_extention/refs/heads/main/install-app.sh")
+    Settings          = @{fileUris = @("https://raw.githubusercontent.com/trinidaa/azure_task_12_deploy_app_with_vm_extention/main/install-app.sh")
         commandToExecute = "./install-app.sh"}
 }
 Set-AzVMExtension @Params

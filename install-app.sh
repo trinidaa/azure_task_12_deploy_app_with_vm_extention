@@ -4,8 +4,8 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get install python3-pip -yq
 mkdir -p /app
 
-git clone https://github.com/trinidaa/azure_task_12_deploy_app_with_vm_extention.git
-cp -r /azure_task_12_deploy_app_with_vm_extention.git/app/* /app/
+git clone https://github.com/trinidaa/azure_task_12_deploy_app_with_vm_extention
+cp -r /azure_task_12_deploy_app_with_vm_extention/app/* /app/
 mv /app/todoapp.service /etc/systemd/system/
 rm -rf /azure_task_12_deploy_app_with_vm_extention
 chmod +x /app/start.sh
